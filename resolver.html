@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resolver · ASIGNA</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="app-shell">
+
+  <!-- ======================= SIDEBAR ======================= -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="6" cy="6" r="2.4" fill="#fff"/><circle cx="6" cy="18" r="2.4" fill="#fff"/>
+          <circle cx="18" cy="6" r="2.4" fill="#fff" opacity=".55"/><circle cx="18" cy="18" r="2.4" fill="#fff" opacity=".55"/>
+          <path d="M6 6L18 18M6 18L18 6" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="brand-text"><h1>ASIGNA</h1><span>MÉTODO HÚNGARO</span></div>
+    </div>
+
+    <div class="nav-label">Principal</div>
+    <a class="nav-item" href="index.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+      Dashboard
+    </a>
+
+    <div class="nav-label">Método húngaro</div>
+    <a class="nav-item" href="teoria.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 4v16M4 8l8-4 8 4M4 8v8l8 4 8-4V8"/></svg>
+      Teoría del método
+    </a>
+    <a class="nav-item active" href="resolver.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="6" cy="6" r="2.4"/><circle cx="6" cy="18" r="2.4"/><circle cx="18" cy="6" r="2.4"/><circle cx="18" cy="18" r="2.4"/><path d="M6 8.4V15.6M18 8.4V15.6"/></svg>
+      Resolver asignación
+    </a>
+    <a class="nav-item" href="#ejemplos">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19V6a2 2 0 0 1 2-2h8l6 6v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z"/><path d="M14 4v6h6"/></svg>
+      Ejemplos resueltos
+    </a>
+
+    <div class="nav-label">Otros modelos del curso</div>
+    <a class="nav-item" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6h18M3 12h18M3 18h12"/></svg>Método Simplex</a>
+    <a class="nav-item" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>Transporte</a>
+
+    <div class="sidebar-foot">Investigación de Operaciones<br>Unidad · Modelo de Asignación</div>
+  </aside>
+
+  <!-- ======================= MAIN ======================= -->
+  <div>
+    <header class="topbar">
+      <div class="breadcrumb"><span class="breadcrumb-bar"></span>Resolver <span class="sep">/</span> <span class="crumb-light">método húngaro</span></div>
+      <div class="topbar-right">
+        <span class="pill" id="status-pill">Esperando datos</span>
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-3.6 3.1-6 7-6s7 2.4 7 6"/></svg></div>
+      </div>
+    </header>
+
+    <main class="content">
+      <div class="solver-grid">
+
+        <!-- ---------- CONFIG PANEL ---------- -->
+        <aside class="card config-card">
+          <h3>Configurar problema</h3>
+          <p class="config-sub">Define el tamaño, el tipo de optimización y los costos de tu matriz de asignación.</p>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="rows-input">Orígenes (filas)</label>
+              <select id="rows-input">
+                <option value="2">2</option><option value="3" selected>3</option>
+                <option value="4">4</option><option value="5">5</option><option value="6">6</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="cols-input">Destinos (columnas)</label>
+              <select id="cols-input">
+                <option value="2">2</option><option value="3" selected>3</option>
+                <option value="4">4</option><option value="5">5</option><option value="6">6</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Objetivo</label>
+            <div class="mode-toggle">
+              <button type="button" id="mode-min" class="active">Minimizar</button>
+              <button type="button" id="mode-max">Maximizar</button>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Matriz de costos</label>
+            <div class="matrix-wrap" id="matrix-input-wrap"></div>
+          </div>
+
+          <div class="config-actions">
+            <button class="btn btn-soft" id="btn-random">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5M21 3l-8 8M8 21H3v-5M3 21l8-8"/></svg>
+              Generar valores aleatorios
+            </button>
+            <button class="btn btn-primary" id="btn-solve">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              Resolver con método húngaro
+            </button>
+          </div>
+
+          <div class="legend">
+            <div class="legend-item"><span class="legend-swatch" style="background:var(--blue-100);border:1.5px solid var(--blue-500)"></span>Celda en cero</div>
+            <div class="legend-item"><span class="legend-swatch" style="background:var(--rose-100);border:1.5px solid var(--rose-500)"></span>Cubierta por una línea</div>
+            <div class="legend-item"><span class="legend-swatch" style="background:var(--emerald-500)"></span>Asignación óptima</div>
+          </div>
+        </aside>
+
+        <!-- ---------- STAGE ---------- -->
+        <section>
+          <div class="card" style="padding: 18px 24px 6px; margin-bottom: 18px;">
+            <div class="progress-track" id="progress-track"></div>
+          </div>
+
+          <div class="card stage-card">
+            <div class="stage-head">
+              <div>
+                <h3 class="stage-title" id="stage-title">Configura tu problema</h3>
+                <p class="stage-desc" id="stage-desc">Define el tamaño de la matriz a la izquierda, ingresa los costos (o genera valores aleatorios) y presiona "Resolver con método húngaro" para iniciar la animación paso a paso.</p>
+              </div>
+              <div class="stage-nav">
+                <button class="btn btn-ghost" id="btn-prev" disabled>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+                </button>
+                <button class="btn btn-primary" id="btn-play" disabled>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3l14 9-14 9V3z"/></svg>
+                  Reproducir
+                </button>
+                <button class="btn btn-ghost" id="btn-next" disabled>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <div id="stage-matrix">
+              <div class="empty-state">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="12" r="2"/><path d="M6 8v8M8 7l9 4M8 17l9-4"/></svg>
+                <p>Aquí se animará la matriz de costos, fila por fila y columna por columna, hasta llegar a la asignación óptima.</p>
+              </div>
+            </div>
+          </div>
+
+          <div id="results-area" style="display:none; margin-top:18px;"></div>
+
+          <div class="card graph-card" style="margin-top:18px;">
+            <div class="panel-head" style="padding:0 0 14px"><h3>Grafo bipartito de asignación</h3><span class="sub">Líneas punteadas = costo cero · línea verde = asignación</span></div>
+            <svg class="graph-svg" id="graph-svg" viewBox="0 0 320 260"></svg>
+          </div>
+        </section>
+      </div>
+
+      <!-- ---------- EJEMPLOS ---------- -->
+      <section class="card" id="ejemplos" style="margin-top:26px; scroll-margin-top: 100px;">
+        <div class="panel-head"><h3>Ejemplos resueltos</h3><span class="sub">Casos típicos para practicar</span></div>
+        <div style="padding: 6px 24px 26px; display:grid; grid-template-columns:repeat(3,1fr); gap:14px;">
+
+          <div class="card" style="padding:18px;">
+            <div class="quick-title" style="margin-bottom:6px;">3 operarios · 3 máquinas</div>
+            <p class="config-sub" style="margin-bottom:14px;">Minimizar el costo de operación asignando cada operario a una máquina distinta.</p>
+            <button class="btn btn-soft example-btn" data-example="ops3">Cargar ejemplo</button>
+          </div>
+
+          <div class="card" style="padding:18px;">
+            <div class="quick-title" style="margin-bottom:6px;">4 vendedores · 4 zonas</div>
+            <p class="config-sub" style="margin-bottom:14px;">Maximizar las ventas esperadas asignando un vendedor por zona geográfica.</p>
+            <button class="btn btn-soft example-btn" data-example="zonas4">Cargar ejemplo</button>
+          </div>
+
+          <div class="card" style="padding:18px;">
+            <div class="quick-title" style="margin-bottom:6px;">2 técnicos · 3 proyectos</div>
+            <p class="config-sub" style="margin-bottom:14px;">Caso rectangular: más tareas que recursos disponibles (con fila ficticia).</p>
+            <button class="btn btn-soft example-btn" data-example="rect23">Cargar ejemplo</button>
+          </div>
+
+        </div>
+      </section>
+
+      <footer class="page-foot">ASIGNA · Proyecto académico de Investigación de Operaciones — Modelo de Asignación y Método Húngaro</footer>
+    </main>
+  </div>
+</div>
+
+<script src="js/app.js"></script>
+<script src="js/hungarian.js"></script>
+<script src="js/stepplayer.js"></script>
+<script src="js/resolver.js"></script>
+</body>
+</html>

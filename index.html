@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ASIGNA · Modelo de Asignación y Método Húngaro</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="app-shell">
+
+  <!-- ======================= SIDEBAR ======================= -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="6" cy="6" r="2.4" fill="#fff"/>
+          <circle cx="6" cy="18" r="2.4" fill="#fff"/>
+          <circle cx="18" cy="6" r="2.4" fill="#fff" opacity=".55"/>
+          <circle cx="18" cy="18" r="2.4" fill="#fff" opacity=".55"/>
+          <path d="M6 6L18 18M6 18L18 6" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="brand-text">
+        <h1>ASIGNA</h1>
+        <span>MÉTODO HÚNGARO</span>
+      </div>
+    </div>
+
+    <div class="nav-label">Principal</div>
+    <a class="nav-item active" href="index.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+      Dashboard
+    </a>
+
+    <div class="nav-label">Método húngaro</div>
+    <a class="nav-item" href="teoria.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 4v16M4 8l8-4 8 4M4 8v8l8 4 8-4V8"/></svg>
+      Teoría del método
+    </a>
+    <a class="nav-item" href="resolver.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="6" cy="6" r="2.4"/><circle cx="6" cy="18" r="2.4"/><circle cx="18" cy="6" r="2.4"/><circle cx="18" cy="18" r="2.4"/><path d="M6 8.4V15.6M18 8.4V15.6"/></svg>
+      Resolver asignación
+    </a>
+    <a class="nav-item" href="resolver.html#ejemplos">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19V6a2 2 0 0 1 2-2h8l6 6v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z"/><path d="M14 4v6h6"/></svg>
+      Ejemplos resueltos
+    </a>
+
+    <div class="nav-label">Otros modelos del curso</div>
+    <a class="nav-item" href="#">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6h18M3 12h18M3 18h12"/></svg>
+      Método Simplex
+    </a>
+    <a class="nav-item" href="#">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+      Transporte
+    </a>
+
+    <div class="sidebar-foot">Investigación de Operaciones<br>Unidad · Modelo de Asignación</div>
+  </aside>
+
+  <!-- ======================= MAIN ======================= -->
+  <div>
+    <header class="topbar">
+      <div class="breadcrumb">
+        <span class="breadcrumb-bar"></span>
+        Dashboard <span class="sep">/</span> <span class="crumb-light">inicio</span>
+      </div>
+      <div class="topbar-right">
+        <span class="pill">Semestre 2026‑I</span>
+        <div class="avatar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-3.6 3.1-6 7-6s7 2.4 7 6"/></svg>
+        </div>
+      </div>
+    </header>
+
+    <main class="content">
+
+      <!-- Stats -->
+      <section class="stat-grid">
+        <div class="card stat-card blue">
+          <div class="stat-num" data-count="4">0</div>
+          <div class="stat-label">Etapas del método</div>
+          <div class="stat-bar"></div>
+        </div>
+        <div class="card stat-card amber">
+          <div class="stat-num" data-count="6">0</div>
+          <div class="stat-label">Tamaño máximo de matriz</div>
+          <div class="stat-bar"></div>
+        </div>
+        <div class="card stat-card emerald">
+          <div class="stat-num" data-count="2">0</div>
+          <div class="stat-label">Modos de optimización</div>
+          <div class="stat-bar"></div>
+        </div>
+        <div class="card stat-card">
+          <div class="stat-num">∞</div>
+          <div class="stat-label">Problemas resolubles</div>
+          <div class="stat-bar"></div>
+        </div>
+      </section>
+
+      <!-- Hero + quick access -->
+      <section class="hero-grid">
+        <div class="card hero-card">
+          <div class="hero-eyebrow"><span class="dash"></span>BIENVENIDO A ASIGNA</div>
+          <h2>Modelo de <span class="accent">Asignación</span> y Método Húngaro, paso a paso</h2>
+          <p>ASIGNA es la herramienta del curso de Investigación de Operaciones para resolver el problema de asignación: minimiza costos o maximiza beneficios al asociar trabajadores con tareas, máquinas con pedidos o recursos con actividades — uno a uno. Cada reducción, cobertura y ajuste de la matriz se anima en tiempo real para que el procedimiento se entienda, no solo el resultado.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="resolver.html">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              Resolver un problema
+            </a>
+            <a class="btn btn-ghost" href="teoria.html">Ver la teoría</a>
+          </div>
+
+          <svg class="hero-graph" viewBox="0 0 220 320" xmlns="http://www.w3.org/2000/svg">
+            <g opacity="0.9">
+              <line x1="40" y1="50"  x2="180" y2="60"  stroke="#3b6df0" stroke-width="2" stroke-dasharray="5 5"><animate attributeName="opacity" values="0.2;1;0.2" dur="3s" repeatCount="indefinite"/></line>
+              <line x1="40" y1="160" x2="180" y2="60"  stroke="#e1e5f0" stroke-width="2"/>
+              <line x1="40" y1="160" x2="180" y2="160" stroke="#3b6df0" stroke-width="3"><animate attributeName="opacity" values="1;0.3;1" dur="2.4s" repeatCount="indefinite"/></line>
+              <line x1="40" y1="270" x2="180" y2="270" stroke="#f5a524" stroke-width="2" stroke-dasharray="5 5"><animate attributeName="opacity" values="0.2;1;0.2" dur="3.4s" repeatCount="indefinite"/></line>
+              <line x1="40" y1="270" x2="180" y2="160" stroke="#e1e5f0" stroke-width="2"/>
+              <circle cx="40" cy="50" r="9" fill="#3b6df0"/>
+              <circle cx="40" cy="160" r="9" fill="#3b6df0"/>
+              <circle cx="40" cy="270" r="9" fill="#3b6df0"/>
+              <circle cx="180" cy="60" r="9" fill="#f5a524"/>
+              <circle cx="180" cy="160" r="9" fill="#16c98d"><animate attributeName="r" values="9;11;9" dur="2.4s" repeatCount="indefinite"/></circle>
+              <circle cx="180" cy="270" r="9" fill="#f5a524"/>
+            </g>
+          </svg>
+        </div>
+
+        <div class="card">
+          <div class="panel-head"><h3>Acceso rápido</h3></div>
+          <div style="padding: 6px 14px 16px; display:flex; flex-direction:column; gap:4px;">
+            <a class="quick-card" href="resolver.html">
+              <div class="quick-icon" style="background:var(--blue-600)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><circle cx="6" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="12" r="2"/><path d="M6 8v8M8 7l9 4M8 17l9-4"/></svg>
+              </div>
+              <div>
+                <div class="quick-title">Resolver asignación</div>
+                <div class="quick-sub">Matriz interactiva + animación</div>
+              </div>
+            </a>
+            <a class="quick-card" href="teoria.html">
+              <div class="quick-icon" style="background:var(--amber-500)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M12 4v16M4 8l8-4 8 4M4 8v8l8 4 8-4V8"/></svg>
+              </div>
+              <div>
+                <div class="quick-title">Teoría del método</div>
+                <div class="quick-sub">Reducción, cobertura y ajuste</div>
+              </div>
+            </a>
+            <a class="quick-card" href="resolver.html#ejemplos">
+              <div class="quick-icon" style="background:var(--emerald-500)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+              </div>
+              <div>
+                <div class="quick-title">Ejemplos resueltos</div>
+                <div class="quick-sub">Casos típicos del curso</div>
+              </div>
+            </a>
+            <a class="quick-card" href="resolver.html">
+              <div class="quick-icon" style="background:var(--navy-800)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M3 17l6-6 4 4 8-8"/><path d="M21 7v6h-6"/></svg>
+              </div>
+              <div>
+                <div class="quick-title">Maximizar beneficio</div>
+                <div class="quick-sub">Conversión automática min↔max</div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Steps overview -->
+      <section class="card">
+        <div class="panel-head">
+          <h3>Las 4 etapas del método húngaro</h3>
+          <span class="sub">Lo que verás animado al resolver</span>
+        </div>
+        <div class="steps-list">
+          <div class="step-row">
+            <div class="step-num">1</div>
+            <div>
+              <div class="step-title">Reducción de filas y columnas</div>
+              <div class="step-desc">Se resta el menor costo de cada fila y luego de cada columna para generar ceros.</div>
+            </div>
+            <span class="step-tag">Automático</span>
+          </div>
+          <div class="step-row">
+            <div class="step-num">2</div>
+            <div>
+              <div class="step-title">Cobertura mínima de ceros</div>
+              <div class="step-desc">Se cubren todos los ceros con el menor número de líneas (Teorema de König).</div>
+            </div>
+            <span class="step-tag">Automático</span>
+          </div>
+          <div class="step-row">
+            <div class="step-num">3</div>
+            <div>
+              <div class="step-title">Ajuste de la matriz</div>
+              <div class="step-desc">Si las líneas son menos que el tamaño n, se ajusta la matriz y se repite la cobertura.</div>
+            </div>
+            <span class="step-tag">Iterativo</span>
+          </div>
+          <div class="step-row">
+            <div class="step-num">4</div>
+            <div>
+              <div class="step-title">Asignación óptima</div>
+              <div class="step-desc">Cuando las líneas igualan a n, se eligen los ceros independientes: esa es la solución.</div>
+            </div>
+            <span class="step-tag">Resultado</span>
+          </div>
+        </div>
+      </section>
+
+      <footer class="page-foot">ASIGNA · Proyecto académico de Investigación de Operaciones — Modelo de Asignación y Método Húngaro</footer>
+    </main>
+  </div>
+</div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
